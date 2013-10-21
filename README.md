@@ -1,5 +1,3 @@
-## sked
-
 [![Nodejitsu Deploy Status](https://webhooks.nodejitsu.com/fchabert/sked.png)](https://webops.nodejitsu.com#fchabert/sked)
 
 ### Environment variables
