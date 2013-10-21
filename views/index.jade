@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  - each show in shows
+    a(href='show/'+show.name)
+      img.img-polaroid.cover(src=show.fanart)

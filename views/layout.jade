@@ -1,0 +1,90 @@
+doctype 5
+html
+  head
+    title sked
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Lato:100');
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.brand(href='/')
+            img(alt='sked', src='/img/sked.png')
+          form.navbar-search.pull-left(action='/show', method='post', autocomplete='off')
+            .input-append
+              input.span4#search(type='text', placeholder='Search', data-provide='typeahead', name='show')
+              button.btn(type='submit')
+                i.icon-search
+          - if (user)
+            ul.nav.pull-right
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  =user.email
+                  b.caret
+                ul.dropdown-menu
+                  li
+                    a(href='/account') Preferences
+                  li
+                    a(href='/logout') Logout
+
+  .container
+    - if (!user)
+       p.lead Welcome to sked, the best way to keep an eye on the shows you love.
+
+    - if (alert)
+      .alert.alert-error
+        button.close(data-dismiss='alert') ×
+        =alert
+
+    - if (message)
+      .alert.alert-info
+        button.close(data-dismiss='alert') ×
+        =message
+
+    - if (!user)
+      .well.login
+        .row-fluid
+          .span6
+            h2 Login
+            form(action='/login', method='post')
+              .email
+                input(type='text', name='email', placeholder='Email address')
+              .password
+                input(type='password', name='password', placeholder='Password')
+              .remember
+                label.checkbox Remember me
+                  input(type="checkbox", checked="checked")
+              .submit
+                button.btn.btn-primary(type='submit') Login
+          .span6
+            h2 Register
+            form(action='/register', method='post')
+              .email
+                input(type='text', name='email', placeholder='Email address')
+              .password
+                input(type='password', name='password', placeholder='Password')
+              .confirm
+                input(type='password', name='confirm', placeholder='Password')
+              .submit
+                button.btn(type='submit') Register
+
+    block content
+
+  footer.footer
+    .container
+      p sked.tv - keep an eye on the shows you love.
+      ul.footer-links
+        li
+          a(href='/') Home
+        li.muted ·
+        li
+          a(href='/') Suggestions
+        li.muted ·
+        li
+          a(href='/') Top Shows
+        li.muted ·
+        li
+          a(href='/') About
+
+  script(type='text/javascript', src='/javascripts/jquery-1.8.3.min.js')
+  script(type='text/javascript', src='/javascripts/main.js')

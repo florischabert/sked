@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= show.name
+  img.img-rounded(src=show.fanart)
+  p.overview= show.overview
+
+  .tabbable
+    ul.nav.nav-tabs
+      li.active
+        a(href='#season1', data-toggle='tab') Season 1
+      li
+        a(href='#season2', data-toggle='tab') Season 2
+      li
+        a(href='#season3', data-toggle='tab') Season 3
+      li
+        a(href='#season4', data-toggle='tab') Season 4
+
+    .tab-content
+      .tab-pane.active#season1
+        p Season 1
+      .tab-pane#season2
+        p Season 2
+      .tab-pane#season3
+        p Season 3
+      .tab-pane#season4
+        p Season 4
+
+  //- a.pull-right.btn(href='#') Unfollow

@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  - if (user)
+    p= user.email
+  - else
+    p Please sign-in to view your account.
